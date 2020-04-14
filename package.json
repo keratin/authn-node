@@ -1,0 +1,12 @@
+{
+  "name": "authn-node",
+  "version": "0.0.0",
+  "description": "NodeJS client library for Keratin AuthN",
+  "main": "dist/index.js",
+  "repository": "git@github.com:keratin/authn-node.git",
+  "author": "Lance Ivy <lance@cainlevy.net>",
+  "license": "LGPL-3.0-only",
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}
