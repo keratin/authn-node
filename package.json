@@ -7,6 +7,11 @@
   "author": "Lance Ivy <lance@cainlevy.net>",
   "license": "LGPL-3.0-only",
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.9",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "jwks-rsa": "^1.8.0"
   }
 }
