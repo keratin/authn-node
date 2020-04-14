@@ -8,7 +8,11 @@ interface Config {
 }
 
 interface Payload {
-  Subject: string;
+  iss: string;
+  aud: string;
+  sub: string;
+  exp: number;
+  iat: number;
 }
 
 export interface VerifyToken {
@@ -19,7 +23,12 @@ const TokenVerifier = (config: Config): VerifyToken => async (token: string) =>
   await new Promise((resolve, reject) => {
     verify(
       token,
-      config.getKey,
+      (header, callback) => {
+        config
+          .getKey(header)
+          .then((k) => callback(null, k))
+          .catch((err) => callback(err));
+      },
       {
         issuer: config.issuer,
         audience: config.audiences,

@@ -14,7 +14,7 @@ const Keychain = (config: Config): GetKey => {
   const client = jwksClient({
     cache: true,
     cacheMaxAge: config.keychainTTL * 60 * 1000,
-    jwksUri: config.issuer,
+    jwksUri: `${config.issuer}/jwks`,
   });
   return async (header) =>
     await new Promise((resolve, reject) => {
