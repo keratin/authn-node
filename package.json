@@ -26,6 +26,6 @@
     "problems": "yarn tsc --noEmit",
     "test": "jest",
     "build": "yarn tsc && rollup -c && cp lib/*.d.ts dist",
-    "release": "yarn problems && yarn test && yarn build && yarn publish"
+    "release": "yarn problems && yarn test && yarn build && yarn publish --access public"
   }
 }
