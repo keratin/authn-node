@@ -1,0 +1,9 @@
+src/
+test/
+lib/
+CODE_OF_CONDUCT.md
+tsconfig.json
+yarn.lock
+.npmignore
+rollup.config.js
+jest.config.js

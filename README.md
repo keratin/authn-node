@@ -11,13 +11,13 @@ need a client for your frontend, such as [keratin/authn-js](https://github.com/k
 ## Installation
 
 ```
-yarn add authn-node
+yarn add @keratin/authn-node
 ```
 
 ## Usage
 
 ```js
-import AuthN from "authn-node";
+import AuthN from "@keratin/authn-node";
 
 const authn = new AuthN({
   // The AUTHN_URL of your Keratin AuthN server. This will be used to verify tokens created by AuthN,

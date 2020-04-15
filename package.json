@@ -1,8 +1,10 @@
 {
-  "name": "authn-node",
-  "version": "0.0.0",
+  "name": "@keratin/authn-node",
+  "version": "0.1.0",
   "description": "NodeJS client library for Keratin AuthN",
   "main": "dist/index.js",
+  "module": "dist/index.module.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:keratin/authn-node.git",
   "author": "Lance Ivy <lance@cainlevy.net>",
   "license": "LGPL-3.0-only",
@@ -12,6 +14,7 @@
     "@types/node-rsa": "^1.0.0",
     "jest": "^25.3.0",
     "node-rsa": "^1.0.8",
+    "rollup": "^2.6.1",
     "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
   },
@@ -21,6 +24,8 @@
   },
   "scripts": {
     "problems": "yarn tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "build": "yarn tsc && rollup -c && cp lib/*.d.ts dist",
+    "release": "yarn problems && yarn test && yarn build && yarn publish"
   }
 }
