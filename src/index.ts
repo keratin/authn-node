@@ -1,2 +1,2 @@
-import Client from "./Client";
-export { Client };
+import AuthN from "./Client";
+export { AuthN };
