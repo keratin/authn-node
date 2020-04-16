@@ -1,6 +1,6 @@
 {
   "name": "@keratin/authn-node",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "NodeJS client library for Keratin AuthN",
   "main": "dist/index.js",
   "module": "dist/index.module.js",

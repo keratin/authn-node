@@ -10,4 +10,5 @@ export default {
       format: "es",
     },
   ],
+  external: ["jsonwebtoken", "jwks-rsa"],
 };

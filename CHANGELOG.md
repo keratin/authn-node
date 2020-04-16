@@ -4,6 +4,12 @@ Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## HEAD
 
+## 0.1.2
+
+### Fixed
+
+- packaging and release process
+
 ## 0.1.1
 
 ### Fixed
