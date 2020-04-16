@@ -60,13 +60,16 @@ integration can do this automatically) and continue using it to verify a logged-
 
 ```js
 // your token may be in a cookie or a header, depending on your client configuration.
-const token = req
-  .get("authorization")
-  .replace(/Bearer/, "")
-  .trim();
+const token = req.headers.authorization.replace(/Bearer/, "").trim();
 
 // subjectFrom will return an AuthN account ID that you can use to identify the user.
-const accountID = authn.subjectFrom(token);
+let accountID;
+try {
+  accountID = await authn.subjectFrom(token);
+} catch (e) {
+  if (e instanceof JsonWebTokenError) console.error(e);
+  else throw e;
+}
 
 // create a user during signup with the accountID
 User.create({ name, email, accountID });

@@ -1,5 +1,3 @@
-/* API client */
-
 import TokenVerifier, { VerifyToken } from "./TokenVerifier";
 import Keychain from "./Keychain";
 
@@ -50,7 +48,8 @@ class Client {
     });
   }
 
-  async subjectFrom(idToken: string): Promise<string> {
+  async subjectFrom(idToken: string | undefined): Promise<string | undefined> {
+    if (!idToken) return;
     return (await this.verifier(idToken))["sub"];
   }
 }
