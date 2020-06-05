@@ -4,6 +4,18 @@ Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## HEAD
 
+## 0.2.1
+
+### Fixed
+
+- fetch JWKs from admin URL when configured
+
+## 0.2.0
+
+### Added
+
+- admin endpoints
+
 ## 0.1.2
 
 ### Fixed
