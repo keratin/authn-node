@@ -56,7 +56,7 @@ class Client {
       issuer: config.issuer,
       audiences,
       getKey: Keychain({
-        issuer: config.issuer,
+        issuer: config.adminURL || config.issuer,
         keychainTTL: this.config.keychainTTL,
       }),
     });
