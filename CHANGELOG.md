@@ -4,6 +4,12 @@ Based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## HEAD
 
+## 0.2.2
+
+### Fixed
+
+- update axios dependency
+
 ## 0.2.1
 
 ### Fixed
