@@ -16,7 +16,7 @@ describe("TokenVerifier", () => {
   });
 
   test("with invalid JWT", async () => {
-    await expect(verifier((null as unknown) as string)).rejects.toEqual(
+    await expect(verifier(null as unknown as string)).rejects.toEqual(
       new JsonWebTokenError("jwt must be provided")
     );
     await expect(verifier("")).rejects.toEqual(
