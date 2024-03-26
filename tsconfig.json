@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "module": "es2015",
-    "moduleResolution": "node",
-    "target": "es6",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es2022",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
@@ -11,11 +11,16 @@
 
     /* checks */
     "strict": true,
+    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ]
 }

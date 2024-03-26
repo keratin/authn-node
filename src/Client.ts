@@ -1,5 +1,5 @@
-import TokenVerifier, { VerifyToken } from "./TokenVerifier";
-import Keychain from "./Keychain";
+import TokenVerifier, { VerifyToken } from "./TokenVerifier.js";
+import Keychain from "./Keychain.js";
 import axios, { AxiosRequestConfig } from "axios";
 
 interface ClientConfig {

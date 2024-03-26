@@ -3,7 +3,7 @@ import { JsonWebTokenError, sign } from "jsonwebtoken";
 import Key from "node-rsa";
 
 describe("TokenVerifier", () => {
-  const key = new Key({ b: 512 });
+  const key = new Key({ b: 2048 });
   const verifier = TokenVerifier({
     issuer: "authn.example.com",
     audiences: ["myapp.example.com"],
@@ -34,14 +34,14 @@ describe("TokenVerifier", () => {
   });
 
   test("with unsigned JWT", async () => {
-    const token = jwt(key, {}, "none");
+    const token = jwt(null, {}, "none");
     await expect(verifier(token)).rejects.toEqual(
       new JsonWebTokenError("jwt signature is required")
     );
   });
 
   test("with JWT signed by unknown keypair", async () => {
-    const unknownKey = new Key({ b: 512 });
+    const unknownKey = new Key({ b: 2048 });
     const token = jwt(unknownKey);
     await expect(verifier(token)).rejects.toEqual(
       new JsonWebTokenError("invalid signature")
@@ -90,12 +90,21 @@ describe("TokenVerifier", () => {
   });
 
   test("with tampered alg=hmac JWT", async () => {
-    const token = jwt(key, {}, "HS256");
+    const token = jwt(makeString(2048), {}, "HS256");
     await expect(verifier(token)).rejects.toEqual(
       new JsonWebTokenError("invalid algorithm")
     );
   });
 });
+
+const makeString = (len: number): string => {
+  let outString: string = '';
+  let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  for (let i = 0; i < len; i++) {
+    outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+  }
+  return outString;
+}
 
 const secondsFromNow = (seconds: number): number =>
   Math.floor(Date.now() / 1000) + seconds * 60;
@@ -109,7 +118,7 @@ interface Claims {
 }
 
 const jwt = (
-  key: Key,
+  key: Key | string | null,
   claims: Partial<Claims> = {},
   algorithm: "RS256" | "HS256" | "none" = "RS256"
 ): string =>
@@ -122,7 +131,7 @@ const jwt = (
       iat: secondsFromNow(-60),
       ...claims,
     },
-    key.exportKey("pkcs1-private-pem"),
+    (key && key instanceof Key) ? key.exportKey("pkcs1-private-pem"): (!key ? "": key),
     { algorithm }
   );
 

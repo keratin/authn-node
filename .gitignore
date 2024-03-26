@@ -2,3 +2,5 @@ node_modules
 dist/
 lib/
 *.tgz
+.yarn/
+yarn.lock
