@@ -1,5 +1,5 @@
 import { verify } from "jsonwebtoken";
-import { GetKey } from "./Keychain";
+import { GetKey } from "./Keychain.js";
 
 interface Config {
   issuer: string;

@@ -19,7 +19,7 @@ const Keychain = (config: Config): GetKey => {
   return async (header) =>
     await new Promise((resolve, reject) => {
       client.getSigningKey(header.kid || "unknown", function (err, key) {
-        err ? reject(err) : resolve(key.getPublicKey());
+        err ? reject(err) : resolve(key ? key.getPublicKey(): "");
       });
     });
 };
